@@ -3,12 +3,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {ThemeProvider} from '@shopify/restyle';
 
 import Navigations from './navs';
-import {themes} from './themes/index';
+import theme from './themes/light';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <ThemeProvider theme={themes[0]}>
+      <ThemeProvider theme={theme}>
         <Navigations />
       </ThemeProvider>
     </NavigationContainer>

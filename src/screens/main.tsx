@@ -1,13 +1,12 @@
 import React from 'react';
 
 import {Container, Text} from '@/atoms';
+import SlidingCounter from '@/components/SlidingCounter';
 
 export default function MainScreen() {
   return (
     <Container justifyContent="center" alignItems="center">
-      <Text fontWeight="700" letterSpacing={2} fontSize={40}>
-        Animations
-      </Text>
+      <SlidingCounter />
     </Container>
   );
 }

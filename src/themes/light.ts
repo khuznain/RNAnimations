@@ -39,7 +39,7 @@ const theme = createTheme({
     red: p.red,
     blue: p.blue70,
     yellow: p.yellow,
-
+    counterBackground: "#111111",
     $primary: p.blue70,
     $windowBackground: '#f0f0f0',
     $background: p.paper10,
