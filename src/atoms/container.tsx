@@ -1,14 +1,14 @@
-import * as React from 'react'
+import * as React from 'react';
 //
-import { Box } from '@/atoms'
-import { BoxProps } from './box'
+import {Box} from '@/atoms';
+import {BoxProps} from './box';
 
 const Container: React.FC<BoxProps> = props => {
   return (
-    <Box {...props} flex={1} bg="$background">
+    <Box flex={1} bg="$background" {...props}>
       {props.children}
     </Box>
-  )
-}
+  );
+};
 
-export default Container
+export default Container;

@@ -74,7 +74,8 @@ const theme = createTheme({
       borderRadius: 'hg'
     }
   }
-})
+});
+
 export default theme
 
 export type Theme = typeof theme
