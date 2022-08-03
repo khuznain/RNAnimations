@@ -5,7 +5,7 @@ import {BoxProps} from './box';
 
 const Container: React.FC<BoxProps> = props => {
   return (
-    <Box flex={1} bg="$background" {...props}>
+    <Box {...props} flex={1} bg="$background">
       {props.children}
     </Box>
   );

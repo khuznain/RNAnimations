@@ -37,7 +37,7 @@ const theme = createTheme({
     white: p.white,
     black: p.black,
     red: p.red,
-    blue: p.blue,
+    blue: p.blue70,
     yellow: p.yellow,
 
     $primary: p.blue70,
