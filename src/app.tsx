@@ -9,7 +9,6 @@ const App = () => {
   return (
     <NavigationContainer>
       <ThemeProvider theme={theme}>
-        {/* // */}
         <Navigations />
       </ThemeProvider>
     </NavigationContainer>

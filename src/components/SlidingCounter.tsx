@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet} from 'react-native';
 import {
   PanGestureHandler,
@@ -6,13 +6,14 @@ import {
 } from 'react-native-gesture-handler';
 import {
   interpolate,
+  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
 
-import {Box} from '@/atoms';
+import {Box, Text} from '@/atoms';
 import FeatherIcon from './icon';
 import AnimatedBox from './AnimatedBox';
 
@@ -29,6 +30,20 @@ const SlidingCounter = () => {
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
 
+  const [count, setCount] = React.useState(0);
+
+  const incrementCount = useCallback(() => {
+    setCount(currentCount => currentCount + 1);
+  }, []);
+
+  const decrementCount = useCallback(() => {
+    setCount(currentCount => currentCount - 1);
+  }, []);
+
+  const resetCount = useCallback(() => {
+    setCount(0);
+  }, []);
+
   const onPanGestureEvent =
     useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
       onActive: event => {
@@ -41,6 +56,14 @@ const SlidingCounter = () => {
         translateY.value = clamp(event.translationY, 0, MAX_SLIDE_OFFSET);
       },
       onEnd: () => {
+        if (translateX.value === MAX_SLIDE_OFFSET) {
+          runOnJS(incrementCount)();
+        } else if (translateX.value === -MAX_SLIDE_OFFSET) {
+          runOnJS(decrementCount)();
+        } else if (translateY.value === MAX_SLIDE_OFFSET) {
+          runOnJS(resetCount)();
+        }
+
         translateX.value = withSpring(0, {stiffness: 100});
         translateY.value = withSpring(0);
       },
@@ -110,6 +133,8 @@ const SlidingCounter = () => {
           <AnimatedBox
             height={50}
             width={50}
+            justifyContent="center"
+            alignItems="center"
             style={[
               {
                 borderRadius: 25,
@@ -117,8 +142,11 @@ const SlidingCounter = () => {
                 position: 'absolute',
               },
               rStyle,
-            ]}
-          />
+            ]}>
+            <Text fontSize={20} color="white">
+              {count}
+            </Text>
+          </AnimatedBox>
         </PanGestureHandler>
       </Box>
     </Box>
