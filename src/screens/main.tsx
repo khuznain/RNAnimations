@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Container, Text} from '@/atoms';
+import {Container} from '@/atoms';
 import SlidingCounter from '@/components/SlidingCounter';
 
 export default function MainScreen() {
