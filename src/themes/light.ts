@@ -9,7 +9,7 @@ const p = {
   blue: 'blue',
   yellow: 'yellow',
   paper00: '#ffffff',
-  paper10: '#f5f5f4',
+  paper10: '#F1F1F1',
   paper20: '#e6e6e6',
   paper300: '#767577',
   paper900: '#202020',
